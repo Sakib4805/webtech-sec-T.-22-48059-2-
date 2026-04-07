@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Information Table</title>
+</head>
+
+<body>
+
+<h2>User Information</h2>
+
+<!-- Name Input -->
+<label>Enter Name:</label>
+<input type="text" id="name">
+
+<br><br>
+
+<!-- Gender Radio Buttons -->
+<label>Select Gender:</label>
+<input type="radio" name="gender" value="Male"> Male
+<input type="radio" name="gender" value="Female"> Female
+
+<br><br>
+
+<!-- Submit Button -->
+<button onclick="addData()">Submit</button>
+
+<br><br>
+
+<h3>Submitted Information</h3>
+
+<!-- Table -->
+<table border="1" id="dataTable">
+    <tr>
+        <th>Name</th>
+        <th>Gender</th>
+    </tr>
+</table>
+
+<script>
+function addData() {
+
+    // Get name value
+    var name = document.getElementById("name").value;
+
+    // Get selected gender
+    var genders = document.getElementsByName("gender");
+    var gender = "";
+
+    for (var i = 0; i < genders.length; i++) {
+        if (genders[i].checked) {
+            gender = genders[i].value;
+        }
+    }
+
+    // Add row to table
+    var table = document.getElementById("dataTable");
+    var row = table.insertRow();
+
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+
+    cell1.innerHTML = name;
+    cell2.innerHTML = gender;
+
+    // Clear input field
+    document.getElementById("name").value = "";
+}
+</script>
+
+</body>
+</html>
